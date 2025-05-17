@@ -1,0 +1,180 @@
+/* General Body Styling */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f4f8;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Title & Header */
+h1 {
+    font-size: 3rem;
+    color: #2c3e50;
+    margin-bottom: 0;
+}
+
+hr {
+    width: 60%;
+    margin: 10px auto 20px;
+    border: 1px solid #ccc;
+}
+
+h2 {
+    font-size: 1.5rem;
+    color: #e74c3c;
+}
+
+/* Board Table Styling */
+#board {
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+/* Base Cell Styling */
+.cell {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 20px;
+    border: 1px solid #444;
+    background-color: white;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s, transform 0.1s;
+}
+
+
+/* Fixed Cells */
+.cell.fixed {
+    background-color: #e0e0e0;
+    font-weight: bold;
+    cursor: default;
+}
+
+/* Highlight wrong entry */
+.cell.error {
+    background-color: #f8d7da;
+    color: red;
+    animation: shake 0.3s;
+}
+
+/* Correct cell (optional highlight) */
+.cell.correct {
+    color: green;
+}
+
+/* Selected (wrong attempt) */
+.cell.selected {
+    background-color: #ffcccc;
+}
+
+/* Flash animation for correct entries */
+.cell.flash-correct {
+    background-color: #d4edda !important;
+    color: green;
+    animation: flash 0.5s;
+}
+
+/* Hover effect on empty cells */
+.cell:not(.fixed):hover {
+    background-color: #dff9fb;
+}
+
+/* Shake animation for wrong answers */
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-4px); }
+    50% { transform: translateX(4px); }
+    75% { transform: translateX(-4px); }
+    100% { transform: translateX(0); }
+}
+
+/* Flash animation */
+@keyframes flash {
+    from { background-color: #d4edda; }
+    to { background-color: white; }
+}
+
+/* Thick borders for 3x3 grid */
+#board tr:nth-child(3n) td {
+    border-bottom: 2px solid #000;
+}
+#board tr td:nth-child(3n) {
+    border-right: 2px solid #000;
+}
+#board tr:first-child td {
+    border-top: 2px solid #000;
+}
+#board tr td:first-child {
+    border-left: 2px solid #000;
+}
+
+/* Digits area */
+#digits {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* Digit Buttons */
+.digit {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ecf0f1;
+    border: 2px solid #bdc3c7;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+
+.digit:hover {
+    background-color: #d0e4f1;
+    transform: scale(1.05);
+}
+
+.digit.selected {
+    background-color: #3498db;
+    color: white;
+    border-color: #2980b9;
+}
+
+/* Used up digits (entered 9 times) */
+.digit.used-up {
+    background-color: #ccc;
+    color: #888;
+    border-color: #aaa;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* Responsive layout for mobile screens */
+@media (max-width: 600px) {
+    .cell {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+
+    .digit {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+}
